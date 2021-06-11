@@ -226,9 +226,7 @@ impl fmt::Display for TwineFormatter {
         write!(
             f,
             r#"
-            // i18n.rs
-            // (generated as procedural macro)
-            //
+            /// i18n.rs (procedural macro rules)
             #[macro_export]
             macro_rules! t {{
             "#,
@@ -275,6 +273,7 @@ impl fmt::Display for TwineFormatter {
             f,
             r#"
 
+            /// Valid language declarations
             #[derive(Clone, Copy, Hash, Debug, PartialEq)]
             #[allow(dead_code)]
             pub enum Lang {{
@@ -293,9 +292,10 @@ impl fmt::Display for TwineFormatter {
             write!(
                 f,
                 r#"
+                /// Lang variant identifier '{}'
                 {}(&'static str),
                 "#,
-                lang,
+                lang, lang,
             )?;
         }
 
@@ -306,6 +306,7 @@ impl fmt::Display for TwineFormatter {
             }}
 
             impl Lang {{
+                /// Enumate all supported languages
                 pub fn all_languages() -> &'static [&'static Lang] {{
                     &[
             "#,
